@@ -20,12 +20,48 @@ const UserPage = () => {
 		username: "k001",
 		profilePic: "./zuck-avatar.png",
 		bio: "hey its kartik",
-		replies: {
-			length: 0,
-		},
-		likes: {
-			length: 0,
-		},
+		replies: [
+			{
+				_id: 1,
+				text: "hey how's going",
+				username: "hmt009",
+				userProfilePic: "/zuck-avatar.png",
+			},
+			{
+				_id: 11,
+				text: "hey how's going",
+				username: "hmt009",
+				userProfilePic: "/zuck-avatar.png",
+			},
+			{
+				_id: 12,
+				text: "hey how's going",
+				username: "hmt009",
+				userProfilePic: "/zuck-avatar.png",
+			},
+
+		],
+		likes: [
+			{
+				_id: 1,
+				text: "hey how's going",
+				username: "hmt009",
+				userProfilePic: "/zuck-avatar.png",
+			},
+			{
+				_id: 11,
+				text: "hey how's going",
+				username: "hmt009",
+				userProfilePic: "/zuck-avatar.png",
+			},
+			{
+				_id: 12,
+				text: "hey how's going",
+				username: "hmt009",
+				userProfilePic: "/zuck-avatar.png",
+			},
+
+		],
 		createdAt: "2 days",
 		img: "./zuck-avatar.png",
 	};
