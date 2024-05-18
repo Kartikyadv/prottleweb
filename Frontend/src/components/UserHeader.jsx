@@ -5,10 +5,15 @@ import { Portal } from "@chakra-ui/portal";
 import { Button, useToast } from "@chakra-ui/react";
 import { BsInstagram } from "react-icons/bs";
 import { CgMoreO } from "react-icons/cg";
+import { useRecoilValue } from "recoil";
+import userAtom from "../atoms/userAtom";
 import { Link as RouterLink } from "react-router-dom";
+import useFollowUnfollow from "../hooks/useFollowUnfollow";
 
-const UserHeader = ({user}) => {
+const UserHeader = ({ user }) => {
 	const toast = useToast();
+	const currentUser = useRecoilValue(userAtom); // logged in user
+	const { handleFollowUnfollow, following, updating } = useFollowUnfollow(user);
 
 	const copyURL = () => {
 		const currentURL = window.location.href;
@@ -63,7 +68,7 @@ const UserHeader = ({user}) => {
 
 			<Text>{user.bio}</Text>
 
-			{/* {currentUser?._id === user._id && (
+			{currentUser?._id === user._id && (
 				<Link as={RouterLink} to='/update'>
 					<Button size={"sm"}>Update Profile</Button>
 				</Link>
@@ -72,10 +77,10 @@ const UserHeader = ({user}) => {
 				<Button size={"sm"} onClick={handleFollowUnfollow} isLoading={updating}>
 					{following ? "Unfollow" : "Follow"}
 				</Button>
-			)} */}
+			)}
 			<Flex w={"full"} justifyContent={"space-between"}>
 				<Flex gap={2} alignItems={"center"}>
-					<Text color={"gray.light"}>{user?.followers?.length} followers</Text>
+					<Text color={"gray.light"}>{user.followers.length} followers</Text>
 					<Box w='1' h='1' bg={"gray.light"} borderRadius={"full"}></Box>
 					<Link color={"gray.light"}>instagram.com</Link>
 				</Flex>
