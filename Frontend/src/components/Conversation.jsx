@@ -24,7 +24,8 @@ const Conversation = ({ conversation, isOnline }) => {
   );
   const colorMode = useColorMode();
 
-  console.log("selectedConverstion", selectedConversation);
+  // console.log(isOnline);
+  // console.log("selectedConverstion", selectedConversation);
   return (
     <Flex
       gap={4}
@@ -46,7 +47,7 @@ const Conversation = ({ conversation, isOnline }) => {
       }
       bg={
         selectedConversation?._id === conversation._id
-          ? colorMode === "light"
+          ? colorMode.colorMode === "light"
             ? "gray.400"
             : "gray.dark"
           : ""
@@ -70,7 +71,7 @@ const Conversation = ({ conversation, isOnline }) => {
         <Text fontWeight="700" display={"flex"} alignItems={"center"}>
           {user.username} <Image src="/verified.png" w={4} h={4} ml={1} />
         </Text>
-        <Box fontSize="xs" display="flex" alignItems="center" gap={1}>
+        <Box fontSize={"xs"} display={"flex"} alignItems={"center"} gap={1}>
           {currentUser._id === lastMessage.sender ? (
             <Box color={lastMessage.seen ? "blue.400" : ""}>
               <BsCheck2All size={16} />
@@ -78,6 +79,7 @@ const Conversation = ({ conversation, isOnline }) => {
           ) : (
             ""
           )}
+          {/* improve logic for last message here */}
           {lastMessage.text.length > 18
             ? lastMessage.text.substring(0, 18) + "..."
             : lastMessage.text || <BsFillImageFill size={16} />}
